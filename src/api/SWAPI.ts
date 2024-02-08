@@ -3,7 +3,7 @@ export const getSWFilms = async () => {
   if (res.status === 200) {
     const data: DataType<FilmType> = await res.json();
     console.log(data);
-    return data;
+    return data.results;
   } else throw new Error("some error");
 };
 
