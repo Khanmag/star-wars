@@ -26,15 +26,6 @@ export const getSWCharacters = async () => {
 };
 
 
-export const getSWChar = async (url:string) => {
-  const res = await fetch(url);
-  if (res.status === 200) {
-    const data:CharacterType = await res.json();
-    console.log(data);
-    return data;
-  } else throw new Error("some error");
-};
-
 type DataType<T> = {
   count: number;
   next: null | string;
