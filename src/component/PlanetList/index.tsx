@@ -1,51 +1,47 @@
 import { useState } from "react";
 import PlanetIcon from "../../assets/icons/PlanetIcon";
+import { Transition } from "react-transition-group";
 
 const PlanetList = ({ planets }: { planets: string[] }) => {
   const [showItems, setShowItems] = useState(false)
-  const [currentClass, setCurrentClass] = useState<"planetShower" | "planetHiddener">("planetHiddener")
-  const [isLoading, setIsLoading] = useState(false)
 
-  const showElement = () => {
-    if (isLoading) return null
-    setIsLoading(true)
-    setShowItems(true)
-    setCurrentClass("planetShower")
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 500)
-  }
-  const hideElement = () => {
-    if (isLoading) return null
-    setIsLoading(true)
-    setCurrentClass("planetHiddener")
-    setTimeout(() => {
-      setShowItems(false)
-      setIsLoading(false)
-    }, 500)
-  }
+
   return (
     <div style={{ width: "200px" }}>
       <div
         style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
-        onClick={() => {
-          if (!showItems) {
-            showElement()
-          } else {
-            hideElement()
-          }
-        }}
+        onClick={() => setShowItems(prev => !prev)}
       >
         <PlanetIcon />
         <h5>PLANETS</h5>
       </div >
-      {showItems && (
+      {/* {showItems && (
         <ul className={currentClass}>
           {planets.map(item => (
             <li key={item}>{item}</li>
           ))}
         </ul>
-      )}
+      )} */}
+      <Transition
+        in={showItems}
+        timeout={{
+          appear: 0,
+          enter: 400,
+          exit: 500,
+        }}
+        mountOnEnter
+        unmountOnExit
+      >
+        {
+          (state) => (
+            <ul className={`planetList ${state}`}>
+            {planets.map(item => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          )
+        }
+      </Transition>
     </div>
   );
 };

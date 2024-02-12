@@ -48,11 +48,24 @@ main {
   margin: 0 auto;
 }
 
-.planetShower {
+/* .planetShower {
   animation: planetAnimation .5s;
 }
 .planetHiddener {
   animation: planetAnimation2 .5s;
+} */
+
+.planetList.entering {
+  animation: planetAnimation .5s;
+}
+.planetList.entered {
+  
+}
+.planetList.exiting {
+  animation: planetAnimation2 .5s;
+}
+.planetList.exited {
+  
 }
 
 @keyframes planetAnimation {
