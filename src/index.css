@@ -47,3 +47,30 @@ main {
   width: 100%;
   margin: 0 auto;
 }
+
+.planetShower {
+  animation: planetAnimation .5s;
+}
+.planetHiddener {
+  animation: planetAnimation2 .5s;
+}
+
+@keyframes planetAnimation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes planetAnimation2 {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+    display: none;
+  }
+}
+
