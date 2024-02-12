@@ -55,8 +55,12 @@ main {
   animation: planetAnimation2 .5s;
 } */
 
+.planetList {
+  transform-origin: top left;
+}
+
 .planetList.entering {
-  animation: planetAnimation .5s;
+  animation: planetAnimation .4s;
 }
 .planetList.entered {
   
