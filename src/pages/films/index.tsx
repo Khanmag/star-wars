@@ -55,6 +55,7 @@ const FilmsPage = () => {
             key={film.episode_id}
             title={film.title}
             director={film.director}
+            planets={film.planets}
           // {
           //   key: film.episode_id,
           //   title: film.title,
